@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:lead"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:berry_lead"
+    }
+  },
+  "output": {
+    "item": "orebushes:grounds_lead",
+    "count": 2
+  }
+}

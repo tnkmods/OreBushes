@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "orebushes:item/berry_blank",
+    "layer1": "orebushes:item/berry_overlay"
+  }
+}

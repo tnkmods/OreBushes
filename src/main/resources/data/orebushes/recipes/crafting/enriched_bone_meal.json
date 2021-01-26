@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XDX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:bone_meal"
+    },
+    "D": {
+      "item": "orebushes:tier_three_dust"
+    }
+  },
+  "result": {
+    "item": "orebushes:enriched_bone_meal",
+    "count": 8
+  }
+}

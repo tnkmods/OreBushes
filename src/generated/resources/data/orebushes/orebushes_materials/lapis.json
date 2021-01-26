@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:lapis",
+  "name": "Lapis",
+  "info": {
+    "color": "2b00c4",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

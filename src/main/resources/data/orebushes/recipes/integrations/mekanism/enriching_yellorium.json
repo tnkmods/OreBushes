@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:yellorium"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:berry_yellorium"
+    }
+  },
+  "output": {
+    "item": "orebushes:grounds_yellorium",
+    "count": 2
+  }
+}

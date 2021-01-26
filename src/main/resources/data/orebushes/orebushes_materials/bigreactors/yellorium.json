@@ -1,0 +1,13 @@
+{
+  "requires_mod": "bigreactors",
+  "id": "orebushes:yellorium",
+  "name": "Yellorium",
+  "info": {
+    "color": "eef200",
+    "rarity": "epic",
+    "tier": 3,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

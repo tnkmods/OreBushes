@@ -1,0 +1,13 @@
+{
+  "requires_mod": "thermal",
+  "id": "orebushes:cinnabar",
+  "name": "Cinnabar",
+  "info": {
+    "color": "e30000",
+    "rarity": "rare",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

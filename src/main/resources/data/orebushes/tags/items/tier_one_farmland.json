@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "orebushes:tier_one_farmland",
+    "orebushes:tier_two_farmland",
+    "orebushes:tier_three_farmland"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "babel:smelting",
+  "conditions": [
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:zinc"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:grounds_zinc"
+  },
+  "result": {
+    "tag": "forge:nuggets/zinc"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

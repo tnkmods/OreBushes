@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DSD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "item": "powah:uraninite"
+    },
+    "D": {
+      "item": "orebushes:tier_two_dust"
+    },
+    "S": {
+      "tag": "forge:seeds"
+    }
+  },
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:uraninite"
+    }
+  ],
+  "result": {
+    "item": "orebushes:seed_uraninite"
+  }
+}

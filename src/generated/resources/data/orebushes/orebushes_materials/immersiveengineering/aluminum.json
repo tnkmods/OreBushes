@@ -1,0 +1,13 @@
+{
+  "requires_mod": "immersiveengineering",
+  "id": "orebushes:aluminum",
+  "name": "Aluminum",
+  "info": {
+    "color": "ededed",
+    "rarity": "uncommon",
+    "tier": 1,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

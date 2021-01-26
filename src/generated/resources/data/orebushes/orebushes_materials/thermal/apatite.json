@@ -1,0 +1,13 @@
+{
+  "requires_mod": "thermal",
+  "id": "orebushes:apatite",
+  "name": "Apatite",
+  "info": {
+    "color": "0066ff",
+    "rarity": "common",
+    "tier": 1,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

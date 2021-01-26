@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:glowstone",
+  "name": "Glowstone",
+  "info": {
+    "color": "e8dc00",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "dust",
+    "grindable": true
+  },
+  "enabled": true
+}

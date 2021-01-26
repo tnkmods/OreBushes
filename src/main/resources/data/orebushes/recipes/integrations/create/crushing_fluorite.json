@@ -1,0 +1,28 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:fluorite"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "orebushes:berry_fluorite"
+    }
+  ],
+  "results": [
+    {
+      "item": "orebushes:grounds_fluorite",
+      "count": 2
+    }
+  ]
+}

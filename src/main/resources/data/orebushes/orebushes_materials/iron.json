@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:iron",
+  "name": "Iron",
+  "info": {
+    "color": "AAFAFAFA",
+    "rarity": "common",
+    "tier": 1,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

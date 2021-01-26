@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DWD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "item": "orebushes:tier_one_dust"
+    },
+    "D": {
+      "item": "minecraft:dirt"
+    },
+    "W": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "orebushes:tier_one_farmland",
+    "count": 4
+  }
+}

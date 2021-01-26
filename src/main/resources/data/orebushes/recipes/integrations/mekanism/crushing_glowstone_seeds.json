@@ -1,0 +1,25 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:glowstone"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:seed_glowstone"
+    }
+  },
+  "output": {
+    "item": "mekanism:bio_fuel"
+  }
+}

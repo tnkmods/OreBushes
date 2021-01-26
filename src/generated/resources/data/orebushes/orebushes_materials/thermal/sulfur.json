@@ -1,0 +1,13 @@
+{
+  "requires_mod": "thermal",
+  "id": "orebushes:sulfur",
+  "name": "Sulfur",
+  "info": {
+    "color": "ccc500",
+    "rarity": "uncommon",
+    "tier": 1,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

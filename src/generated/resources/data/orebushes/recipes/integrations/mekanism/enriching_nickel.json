@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:nickel"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:berry_nickel"
+    }
+  },
+  "output": {
+    "item": "orebushes:grounds_nickel",
+    "count": 2
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "requires_mod": "thermal",
+  "id": "orebushes:tin",
+  "name": "Tin",
+  "info": {
+    "color": "FFBCEDFF",
+    "rarity": "uncommon",
+    "tier": 1,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

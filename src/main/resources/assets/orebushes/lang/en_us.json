@@ -1,0 +1,22 @@
+{
+  "itemGroup.orebushes": "OreBushes",
+
+  "item.orebushes.tier_one_dust": "Primarium Essence",
+  "item.orebushes.tier_two_dust": "Secundium Essence",
+  "item.orebushes.tier_three_dust": "Tertium Essence",
+  "item.orebushes.enriched_bone_meal": "Enriched Bone Meal",
+
+  "item.orebushes.template_berry": "{{MATERIAL}} Berries",
+  "item.orebushes.template_berry_desc": "Produced from a {{BUSH}}",
+  "item.orebushes.template_seed": "{{MATERIAL}} Berry Seeds",
+  "item.orebushes.template_seed_desc_single": "Plant on {{TIER}} farmland",
+  "item.orebushes.template_seed_desc_multi": "Plant on {{TIER}} farmland or higher",
+  "item.orebushes.template_grounds": "Ground {{MATERIAL}} Berries",
+
+  "block.orebushes.tier_one_farmland": "Primarium Enriched Farmland",
+  "block.orebushes.tier_one_farmland_desc": "Tier I Farmland",
+  "block.orebushes.tier_two_farmland": "Secundium Enriched Farmland",
+  "block.orebushes.tier_two_farmland_desc": "Tier II Farmland",
+  "block.orebushes.tier_three_farmland": "Tertium Enriched Farmland",
+  "block.orebushes.tier_three_farmland_desc": "Tier III Farmland"
+}

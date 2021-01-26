@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:gold",
+  "name": "Gold",
+  "info": {
+    "color": "FFFFD700",
+    "rarity": "rare",
+    "tier": 2,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

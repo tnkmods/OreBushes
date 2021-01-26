@@ -1,0 +1,25 @@
+{
+  "type": "mekanism:crushing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:lead"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:grounds_lead"
+    }
+  },
+  "output": {
+    "item": "mekanism:bio_fuel"
+  }
+}

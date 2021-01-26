@@ -1,0 +1,28 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:apatite"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "orebushes:berry_apatite"
+    }
+  ],
+  "results": [
+    {
+      "item": "orebushes:grounds_apatite",
+      "count": 2
+    }
+  ]
+}

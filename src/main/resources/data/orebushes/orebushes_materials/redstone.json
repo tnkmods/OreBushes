@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:redstone",
+  "name": "Redstone",
+  "info": {
+    "color": "FFC70000",
+    "rarity": "common",
+    "tier": 1,
+    "type": "dust",
+    "grindable": true
+  },
+  "enabled": true
+}

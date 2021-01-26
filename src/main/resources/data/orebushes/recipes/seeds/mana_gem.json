@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DSD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "tag": "forge:gems/mana"
+    },
+    "D": {
+      "item": "orebushes:tier_two_dust"
+    },
+    "S": {
+      "tag": "forge:seeds"
+    }
+  },
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:mana_gem"
+    }
+  ],
+  "result": {
+    "item": "orebushes:seed_mana_gem"
+  }
+}

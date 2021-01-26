@@ -1,0 +1,13 @@
+{
+  "requires_mod": "mekanism",
+  "id": "orebushes:lead",
+  "name": "Lead",
+  "info": {
+    "color": "FF5100A6",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

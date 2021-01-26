@@ -1,0 +1,13 @@
+{
+  "requires_mod": "thermal",
+  "id": "orebushes:silver",
+  "name": "Silver",
+  "info": {
+    "color": "d1e9ed",
+    "rarity": "rare",
+    "tier": 2,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

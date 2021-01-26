@@ -1,0 +1,28 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:uranium"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "orebushes:berry_uranium"
+    }
+  ],
+  "results": [
+    {
+      "item": "orebushes:grounds_uranium",
+      "count": 2
+    }
+  ]
+}

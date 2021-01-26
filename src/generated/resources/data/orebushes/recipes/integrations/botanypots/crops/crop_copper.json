@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:copper"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "seed": {
+    "item": "orebushes:seed_copper"
+  },
+  "categories": [
+    "orebushes_tier1"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "orebushes:bush_copper",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "orebushes:berry_copper"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

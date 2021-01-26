@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "orebushes:block/berry_bush_blank_age0"
+    },
+    "age=1": {
+      "model": "orebushes:block/berry_bush_blank_age1"
+    },
+    "age=2": {
+      "model": "orebushes:block/berry_bush_blank_age2"
+    },
+    "age=3": {
+      "model": "orebushes:block/berry_bush_blank_age3"
+    }
+  }
+}

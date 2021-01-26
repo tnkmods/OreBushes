@@ -1,0 +1,13 @@
+{
+  "requires_mod": "astralsorcery",
+  "id": "orebushes:aquamarine",
+  "name": "Aquamarine",
+  "info": {
+    "color": "29c9ff",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

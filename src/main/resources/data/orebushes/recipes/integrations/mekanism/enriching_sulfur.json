@@ -1,0 +1,26 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:sulfur"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:berry_sulfur"
+    }
+  },
+  "output": {
+    "item": "orebushes:grounds_sulfur",
+    "count": 2
+  }
+}

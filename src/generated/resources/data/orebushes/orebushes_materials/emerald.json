@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:emerald",
+  "name": "Emerald",
+  "info": {
+    "color": "FF218400",
+    "rarity": "epic",
+    "tier": 3,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

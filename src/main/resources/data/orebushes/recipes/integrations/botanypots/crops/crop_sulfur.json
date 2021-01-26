@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:sulfur"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "seed": {
+    "item": "orebushes:seed_sulfur"
+  },
+  "categories": [
+    "orebushes_tier1"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "orebushes:bush_sulfur",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "orebushes:berry_sulfur"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

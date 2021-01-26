@@ -1,0 +1,28 @@
+{
+  "type": "create:crushing",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    },
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:glowstone"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "orebushes:berry_glowstone"
+    }
+  ],
+  "results": [
+    {
+      "item": "orebushes:grounds_glowstone",
+      "count": 2
+    }
+  ]
+}

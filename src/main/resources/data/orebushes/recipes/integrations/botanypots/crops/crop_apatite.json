@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:apatite"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "seed": {
+    "item": "orebushes:seed_apatite"
+  },
+  "categories": [
+    "orebushes_tier1"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "orebushes:bush_apatite",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "orebushes:berry_apatite"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

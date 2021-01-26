@@ -1,0 +1,13 @@
+{
+  "requires_mod": "powah",
+  "id": "orebushes:uraninite",
+  "name": "Uraninite",
+  "info": {
+    "color": "FF00E137",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

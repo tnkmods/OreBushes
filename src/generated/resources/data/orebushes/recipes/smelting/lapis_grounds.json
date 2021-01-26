@@ -1,0 +1,17 @@
+{
+  "type": "babel:smelting",
+  "conditions": [
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:lapis"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:grounds_lapis"
+  },
+  "result": {
+    "item": "minecraft:lapis_lazuli"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

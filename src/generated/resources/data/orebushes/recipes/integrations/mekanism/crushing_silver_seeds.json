@@ -1,0 +1,25 @@
+{
+  "type": "mekanism:enriching",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:silver"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "mekanism"
+    }
+  ],
+  "input": {
+    "ingredient": {
+      "item": "orebushes:seed_silver"
+    }
+  },
+  "output": {
+    "item": "mekanism:bio_fuel"
+  }
+}

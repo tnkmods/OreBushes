@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:cinnabar"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "seed": {
+    "item": "orebushes:seed_cinnabar"
+  },
+  "categories": [
+    "orebushes_tier2"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "orebushes:bush_cinnabar",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "orebushes:berry_cinnabar"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

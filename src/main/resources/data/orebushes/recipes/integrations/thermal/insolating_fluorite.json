@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "thermal"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:seed_fluorite"
+  },
+  "result": [
+    {
+      "item": "orebushes:berry_fluorite",
+      "chance": 0.75
+    },
+    {
+      "item": "orebushes:seed_fluorite",
+      "chance": 1.0
+    }
+  ],
+  "waterMod": 3.0,
+  "energyMod": 3.0
+}

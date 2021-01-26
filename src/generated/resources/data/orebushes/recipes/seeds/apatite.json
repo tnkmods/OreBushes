@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DSD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "tag": "forge:gems/apatite"
+    },
+    "D": {
+      "item": "orebushes:tier_one_dust"
+    },
+    "S": {
+      "tag": "forge:seeds"
+    }
+  },
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:apatite"
+    }
+  ],
+  "result": {
+    "item": "orebushes:seed_apatite"
+  }
+}

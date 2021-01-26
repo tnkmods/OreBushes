@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:emerald"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "seed": {
+    "item": "orebushes:seed_emerald"
+  },
+  "categories": [
+    "orebushes_tier3"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "orebushes:bush_emerald",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "orebushes:berry_emerald"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

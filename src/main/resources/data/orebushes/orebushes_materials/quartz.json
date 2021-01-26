@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:quartz",
+  "name": "Quartz",
+  "info": {
+    "color": "ffffff",
+    "rarity": "common",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

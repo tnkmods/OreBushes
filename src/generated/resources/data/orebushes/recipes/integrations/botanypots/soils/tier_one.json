@@ -1,0 +1,26 @@
+{
+  "type": "botanypots:soil",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "input": {
+    "item": "orebushes:tier_one_farmland"
+  },
+  "display": {
+    "block": "orebushes:tier_one_farmland",
+    "properties": {
+      "moisture": 7
+    }
+  },
+  "categories": [
+    "orebushes_tier1"
+  ],
+  "growthModifier": 0.2
+}

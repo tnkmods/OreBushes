@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:niter",
+  "name": "Niter",
+  "info": {
+    "color": "feffeb",
+    "rarity": "rare",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

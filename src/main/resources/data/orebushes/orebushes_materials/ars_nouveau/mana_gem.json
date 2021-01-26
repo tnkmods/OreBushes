@@ -1,0 +1,13 @@
+{
+  "requires_mod": "ars_nouveau",
+  "id": "orebushes:mana_gem",
+  "name": "Mana Gem",
+  "info": {
+    "color": "b808c4",
+    "rarity": "rare",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

@@ -1,0 +1,13 @@
+{
+  "requires_mod": "appliedenergistics2",
+  "id": "orebushes:certus_quartz",
+  "name": "Certus Quartz",
+  "info": {
+    "color": "a8c7ed",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

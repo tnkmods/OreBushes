@@ -1,0 +1,40 @@
+{
+  "type": "botanypots:crop",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    },
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:gold"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "botanypots"
+    }
+  ],
+  "seed": {
+    "item": "orebushes:seed_gold"
+  },
+  "categories": [
+    "orebushes_tier2"
+  ],
+  "growthTicks": 1200,
+  "display": {
+    "block": "orebushes:bush_gold",
+    "properties": {
+      "age": 3
+    }
+  },
+  "results": [
+    {
+      "chance": 0.75,
+      "output": {
+        "item": "orebushes:berry_gold"
+      },
+      "minRolls": 1,
+      "maxRolls": 1
+    }
+  ]
+}

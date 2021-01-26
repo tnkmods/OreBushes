@@ -1,0 +1,17 @@
+{
+  "type": "babel:smelting",
+  "conditions": [
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:tin"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:grounds_tin"
+  },
+  "result": {
+    "tag": "forge:nuggets/tin"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DSD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "tag": "forge:ingots/gold"
+    },
+    "D": {
+      "item": "orebushes:tier_two_dust"
+    },
+    "S": {
+      "tag": "forge:seeds"
+    }
+  },
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:gold"
+    }
+  ],
+  "result": {
+    "item": "orebushes:seed_gold"
+  }
+}

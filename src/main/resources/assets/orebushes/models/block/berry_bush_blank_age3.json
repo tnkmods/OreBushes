@@ -1,0 +1,7 @@
+{
+  "parent": "orebushes:block/berry_bush",
+  "textures": {
+    "cross": "orebushes:block/berry_bush_age3",
+    "berry": "orebushes:block/berry_bush_berry_blank"
+  }
+}

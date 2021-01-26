@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DSD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "tag": "forge:ingots/aluminum"
+    },
+    "D": {
+      "item": "orebushes:tier_one_dust"
+    },
+    "S": {
+      "tag": "forge:seeds"
+    }
+  },
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:aluminum"
+    }
+  ],
+  "result": {
+    "item": "orebushes:seed_aluminum"
+  }
+}

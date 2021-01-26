@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "orebushes:tier_two_dust"
+    }
+  },
+  "result": {
+    "item": "orebushes:tier_three_dust"
+  }
+}

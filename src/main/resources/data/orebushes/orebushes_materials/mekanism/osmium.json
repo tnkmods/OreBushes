@@ -1,0 +1,13 @@
+{
+  "requires_mod": "mekanism",
+  "id": "orebushes:osmium",
+  "name": "Osmium",
+  "info": {
+    "color": "FF83ECE5",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

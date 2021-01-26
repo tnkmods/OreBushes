@@ -1,0 +1,17 @@
+{
+  "type": "babel:smelting",
+  "conditions": [
+    {
+      "type": "orebushes:grounds_enabled",
+      "bush": "orebushes:copper"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:grounds_copper"
+  },
+  "result": {
+    "tag": "forge:nuggets/copper"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

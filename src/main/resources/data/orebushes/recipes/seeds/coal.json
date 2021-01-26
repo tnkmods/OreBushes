@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XDX",
+    "DSD",
+    "XDX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:coal"
+    },
+    "D": {
+      "item": "orebushes:tier_one_dust"
+    },
+    "S": {
+      "tag": "forge:seeds"
+    }
+  },
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:coal"
+    }
+  ],
+  "result": {
+    "item": "orebushes:seed_coal"
+  }
+}

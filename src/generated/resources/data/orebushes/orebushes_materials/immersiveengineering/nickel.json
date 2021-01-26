@@ -1,0 +1,13 @@
+{
+  "requires_mod": "immersiveengineering",
+  "id": "orebushes:nickel",
+  "name": "Nickel",
+  "info": {
+    "color": "f2ff7a",
+    "rarity": "rare",
+    "tier": 2,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}

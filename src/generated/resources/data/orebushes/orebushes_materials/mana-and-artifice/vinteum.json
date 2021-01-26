@@ -1,0 +1,13 @@
+{
+  "requires_mod": "mana-and-artifice",
+  "id": "orebushes:vinteum",
+  "name": "Vinteum",
+  "info": {
+    "color": "1c5dad",
+    "rarity": "uncommon",
+    "tier": 1,
+    "type": "dust",
+    "grindable": true
+  },
+  "enabled": true
+}

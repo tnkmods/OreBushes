@@ -1,0 +1,28 @@
+{
+  "type": "thermal:insolator",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermal"
+    },
+    {
+      "type": "orebushes:integration_enabled",
+      "integration": "thermal"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:seed_gold"
+  },
+  "result": [
+    {
+      "item": "orebushes:berry_gold",
+      "chance": 0.75
+    },
+    {
+      "item": "orebushes:seed_gold",
+      "chance": 1.0
+    }
+  ],
+  "waterMod": 3.0,
+  "energyMod": 3.0
+}

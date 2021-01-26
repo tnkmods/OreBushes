@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:essence",
+  "name": "Essence",
+  "info": {
+    "color": "910091",
+    "rarity": "common",
+    "tier": 0,
+    "type": "natural",
+    "grindable": false
+  },
+  "enabled": true
+}

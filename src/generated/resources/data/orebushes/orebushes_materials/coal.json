@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:coal",
+  "name": "Coal",
+  "info": {
+    "color": "66222222",
+    "rarity": "common",
+    "tier": 1,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

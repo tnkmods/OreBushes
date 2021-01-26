@@ -1,0 +1,17 @@
+{
+  "type": "babel:smelting",
+  "conditions": [
+    {
+      "type": "orebushes:bush_enabled",
+      "bush": "orebushes:nickel"
+    }
+  ],
+  "ingredient": {
+    "item": "orebushes:berry_nickel"
+  },
+  "result": {
+    "tag": "forge:nuggets/nickel"
+  },
+  "experience": 0.1,
+  "cookingtime": 200
+}

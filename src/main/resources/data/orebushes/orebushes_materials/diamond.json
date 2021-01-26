@@ -1,0 +1,12 @@
+{
+  "id": "orebushes:diamond",
+  "name": "Diamond",
+  "info": {
+    "color": "FF00F8F9",
+    "rarity": "epic",
+    "tier": 3,
+    "type": "gem",
+    "grindable": true
+  },
+  "enabled": true
+}

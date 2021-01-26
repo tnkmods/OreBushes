@@ -1,0 +1,13 @@
+{
+  "requires_mod": "create",
+  "id": "orebushes:zinc",
+  "name": "Zinc",
+  "info": {
+    "color": "d5f2de",
+    "rarity": "uncommon",
+    "tier": 2,
+    "type": "metal",
+    "grindable": true
+  },
+  "enabled": true
+}
