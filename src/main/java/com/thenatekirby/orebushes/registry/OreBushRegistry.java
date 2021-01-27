@@ -174,7 +174,7 @@ public class OreBushRegistry {
             ComposterBlock.CHANCES.putIfAbsent(berry, 0.3f);
 
             // Grounds
-            if (!isGrindingAvailable()) {
+            if (isGrindingAvailable()) {
                 GroundsItem grounds = new GroundsItem(bush);
                 ResourceLocation mulchId = OreBushes.MOD.withPath("grounds_" + bush.getMaterialId().getPath());
                 grounds.setRegistryName(mulchId);
@@ -200,6 +200,6 @@ public class OreBushRegistry {
             return false;
         }
 
-        return ModUtil.isAnyModLoaded(Mods.MEKANISM, Mods.THERMAL);
+        return ModUtil.isAnyModLoaded(Mods.MEKANISM, Mods.THERMAL, Mods.CREATE);
     }
 }

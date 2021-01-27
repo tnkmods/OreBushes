@@ -1,5 +1,6 @@
 package com.thenatekirby.orebushes.block;
 
+import com.thenatekirby.orebushes.registration.OreBushesItems;
 import com.thenatekirby.orebushes.registry.OreBush;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -162,19 +163,17 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
     }
 
     @SuppressWarnings("unused")
-    public boolean onEnrichedBonemeal(@Nonnull ServerWorld world, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state, boolean automated) {
-        int nextAge = Math.min(3, state.get(AGE) + 1);
+    public boolean onEnrichedBonemeal(@Nonnull ServerWorld world, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
+        int nextAge = state.get(AGE) + 1;
         if (state.get(AGE) < 3) {
             world.setBlockState(pos, state.with(AGE, nextAge), 2);
             return true;
 
-        } else if (automated) {
+        } else {
             spawnBerryDrops(world, pos);
             world.setBlockState(pos, state.with(AGE, 1), 2);
             return false;
         }
-
-        return false;
     }
 
     // endregion
@@ -192,6 +191,10 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
 
     @Nonnull
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        if (player.getHeldItem(handIn).getItem() == OreBushesItems.ENRICHED_BONE_MEAL.toItem()) {
+            return ActionResultType.PASS;
+        }
+
         int age = state.get(AGE);
         if (age == 3) {
             spawnBerryDrops(worldIn, pos);

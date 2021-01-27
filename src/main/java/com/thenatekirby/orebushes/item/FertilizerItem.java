@@ -36,24 +36,25 @@ public class FertilizerItem extends Item {
         BlockPos blockPos = context.getPos();
         ItemStack itemStack = context.getItem();
 
-        if (FertilizerItem.applyBonemeal(itemStack, world, blockPos, false)) {
+        if (FertilizerItem.applyBonemeal(itemStack, world, blockPos)) {
             return ActionResultType.SUCCESS;
+        } else {
+            return ActionResultType.PASS;
         }
-
-        return super.onItemUse(context);
     }
 
-    private static boolean applyBonemeal(@Nonnull ItemStack itemStack, @Nonnull World world, @Nonnull BlockPos blockPos, boolean automated) {
+    private static boolean applyBonemeal(@Nonnull ItemStack itemStack, @Nonnull World world, @Nonnull BlockPos blockPos) {
         BlockState blockState = world.getBlockState(blockPos);
         if (blockState.getBlock() instanceof OreBushBlock) {
             OreBushBlock oreBushBlock = (OreBushBlock) blockState.getBlock();
             if (!world.isRemote) {
-                if (oreBushBlock.onEnrichedBonemeal((ServerWorld) world, world.rand, blockPos, blockState, automated)) {
+                if (oreBushBlock.onEnrichedBonemeal((ServerWorld) world, world.rand, blockPos, blockState)) {
                     world.playEvent(2005, blockPos, 0);
                     itemStack.shrink(1);
-                    return true;
                 }
             }
+
+            return true;
         }
 
         return false;
@@ -72,7 +73,7 @@ public class FertilizerItem extends Item {
                 World world = source.getWorld();
                 BlockPos blockPos = source.getBlockPos().offset(source.getBlockState().get(DispenserBlock.FACING));
 
-                if (!FertilizerItem.applyBonemeal(stack, world, blockPos, true)) {
+                if (!FertilizerItem.applyBonemeal(stack, world, blockPos)) {
                     setSuccessful(false);
                 } else if (!world.isRemote) {
                     world.playEvent(2005, blockPos, 0);
