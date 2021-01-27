@@ -1,4 +1,5 @@
 {
+  "requires_mod": "thermal",
   "id": "orebushes:niter",
   "name": "Niter",
   "info": {

@@ -4,6 +4,7 @@ import com.thenatekirby.orebushes.config.OreBushesConfig;
 import com.thenatekirby.orebushes.registration.OreBushesTags;
 import com.thenatekirby.orebushes.registry.material.*;
 import net.minecraft.block.Block;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
@@ -61,7 +62,9 @@ public class OreBushMaterial {
 
     public Tags.IOptionalNamedTag<Block> getFarmlandTag() {
         MaterialTier tier = getInfo().getTier();
-        if (tier == MaterialTier.TIER_ONE) {
+        if (tier == MaterialTier.TIER_ZERO) {
+            return Tags.Blocks.DIRT;
+        } else if (tier == MaterialTier.TIER_ONE) {
             return OreBushesTags.Blocks.TIER_ONE_FARMLAND;
         } else if (tier == MaterialTier.TIER_TWO) {
             return OreBushesTags.Blocks.TIER_TWO_FARMLAND;

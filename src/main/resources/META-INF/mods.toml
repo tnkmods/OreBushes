@@ -28,6 +28,6 @@ Grow your ores.
 [[dependencies.orebushes]]
     modId="babel"
     mandatory=true
-    versionRange="[1.0.0,2.0.0)"
+    versionRange="[1.0.3,2.0.0)"
     ordering="AFTER"
     side="BOTH"

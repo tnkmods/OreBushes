@@ -364,6 +364,7 @@ public class OreBushData {
                 .withRarity(MaterialRarity.RARE)
                 .withColor("feffeb")
                 .withIngredient(RecipeIngredient.fromTag(FORGE.withPath("gems/niter")))
+                .withRequiredMod(Mods.THERMAL)
                 .buildInto(oreBushes);
 
         OreBushData.Builder.builder(ORE_BUSHES.withPath("quartz"))
