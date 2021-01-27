@@ -12,7 +12,7 @@ Start by harvesting a simple essence berry seed from the grass. Harvest the berr
 
 #### Found an issue?
 
-Report it here: Github
+Report it here: [Github](https://github.com/tnkmods/OreBushes/issues)
 
 __Note__
 
