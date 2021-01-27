@@ -1,8 +1,11 @@
 package com.thenatekirby.orebushes.registry;
 
 import com.google.common.base.Stopwatch;
+import com.thenatekirby.babel.integration.Mods;
+import com.thenatekirby.babel.util.ModUtil;
 import com.thenatekirby.orebushes.OreBushes;
 import com.thenatekirby.orebushes.block.OreBushBlock;
+import com.thenatekirby.orebushes.config.OreBushesConfig;
 import com.thenatekirby.orebushes.item.BerryItem;
 import com.thenatekirby.orebushes.item.GroundsItem;
 import com.thenatekirby.orebushes.item.SeedItem;
@@ -167,17 +170,19 @@ public class OreBushRegistry {
             registry.register(berry);
             bush.setBerryItem(berry);
 
-            // Grounds
-            GroundsItem grounds = new GroundsItem(bush);
-            ResourceLocation mulchId = OreBushes.MOD.withPath("grounds_" + bush.getMaterialId().getPath());
-            grounds.setRegistryName(mulchId);
-
-            ComposterBlock.CHANCES.putIfAbsent(grounds, 0.3f);
             ComposterBlock.CHANCES.putIfAbsent(seed, 0.3f);
             ComposterBlock.CHANCES.putIfAbsent(berry, 0.3f);
 
-            registry.register(grounds);
-            bush.setGroundsItem(grounds);
+            // Grounds
+            if (!isGrindingAvailable()) {
+                GroundsItem grounds = new GroundsItem(bush);
+                ResourceLocation mulchId = OreBushes.MOD.withPath("grounds_" + bush.getMaterialId().getPath());
+                grounds.setRegistryName(mulchId);
+                registry.register(grounds);
+                bush.setGroundsItem(grounds);
+
+                ComposterBlock.CHANCES.putIfAbsent(grounds, 0.3f);
+            }
         });
     }
 
@@ -188,5 +193,13 @@ public class OreBushRegistry {
 
     public Collection<OreBush> getAllOreBushes() {
         return registry.values();
+    }
+
+    public boolean isGrindingAvailable() {
+        if (!OreBushesConfig.GRINDING.get()) {
+            return false;
+        }
+
+        return ModUtil.isAnyModLoaded(Mods.MEKANISM, Mods.THERMAL);
     }
 }

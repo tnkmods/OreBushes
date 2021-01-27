@@ -18,9 +18,9 @@ public class OreBushesBlocks {
     private static DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, OreBushes.MOD_ID);
 
     public static DeferredBlock<BerryBushBlankBlock> BERRY_BUSH_BLANK = DeferredBlock.createHidden("berry_bush_blank", BerryBushBlankBlock::new, BLOCKS, ITEMS);
-    public static DeferredBlock<EnrichedFarmlandBlock> TIER_ONE_FARMLAND = DeferredBlock.create("tier_one_farmland", () -> new EnrichedFarmlandBlock(MaterialTier.TIER_ONE), OreBushItemGroup.getDefaultBlockItemProperties(), BLOCKS, ITEMS);
-    public static DeferredBlock<EnrichedFarmlandBlock> TIER_TWO_FARMLAND = DeferredBlock.create("tier_two_farmland", () -> new EnrichedFarmlandBlock(MaterialTier.TIER_TWO), OreBushItemGroup.getDefaultBlockItemProperties(), BLOCKS, ITEMS);
-    public static DeferredBlock<EnrichedFarmlandBlock> TIER_THREE_FARMLAND = DeferredBlock.create("tier_three_farmland", () -> new EnrichedFarmlandBlock(MaterialTier.TIER_THREE), OreBushItemGroup.getDefaultBlockItemProperties(), BLOCKS, ITEMS);
+    public static DeferredBlock<EnrichedFarmlandBlock> TIER_ONE_FARMLAND = DeferredBlock.create("tier_one_farmland", () -> new EnrichedFarmlandBlock(MaterialTier.TIER_ONE), OreBushesItemGroup.getDefaultBlockItemProperties(), BLOCKS, ITEMS);
+    public static DeferredBlock<EnrichedFarmlandBlock> TIER_TWO_FARMLAND = DeferredBlock.create("tier_two_farmland", () -> new EnrichedFarmlandBlock(MaterialTier.TIER_TWO), OreBushesItemGroup.getDefaultBlockItemProperties(), BLOCKS, ITEMS);
+    public static DeferredBlock<EnrichedFarmlandBlock> TIER_THREE_FARMLAND = DeferredBlock.create("tier_three_farmland", () -> new EnrichedFarmlandBlock(MaterialTier.TIER_THREE), OreBushesItemGroup.getDefaultBlockItemProperties(), BLOCKS, ITEMS);
 
     public static void register() {
         BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());

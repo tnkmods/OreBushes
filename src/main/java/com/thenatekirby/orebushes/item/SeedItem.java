@@ -1,7 +1,7 @@
 package com.thenatekirby.orebushes.item;
 
 import com.thenatekirby.orebushes.Localization;
-import com.thenatekirby.orebushes.registration.OreBushItemGroup;
+import com.thenatekirby.orebushes.registration.OreBushesItemGroup;
 import com.thenatekirby.orebushes.registry.OreBush;
 import com.thenatekirby.orebushes.registry.material.MaterialTier;
 import net.minecraft.client.util.ITooltipFlag;
@@ -21,7 +21,7 @@ import java.util.List;
 // ====---------------------------------------------------------------------------====
 
 public class SeedItem extends BlockNamedItem {
-    private static Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushItemGroup.getItemGroup());
+    private static Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup());
     private OreBush oreBush;
 
     public SeedItem(OreBush oreBush) {

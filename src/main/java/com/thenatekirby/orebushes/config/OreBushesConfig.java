@@ -18,9 +18,24 @@ import java.nio.file.Path;
 
 @Mod.EventBusSubscriber
 public class OreBushesConfig {
-    private static final String CATEGORY_GENERAL = "Integrations";
+    private static final String CATEGORY_GENERAL = "General";
+    private static final String CATEGORY_INTEGRATIONS = "Integrations";
+    private static final String CATEGORY_GROWTH = "Growth";
+    private static final String CATEGORY_DROPS = "Drops";
 
     private static ForgeConfigSpec COMMON_CONFIG;
+
+    // Bushes
+    public static ForgeConfigSpec.IntValue CHANCE_COMMON;
+    public static ForgeConfigSpec.IntValue CHANCE_UNCOMMON;
+    public static ForgeConfigSpec.IntValue CHANCE_RARE;
+    public static ForgeConfigSpec.IntValue CHANCE_EPIC;
+
+    // Drops
+    public static ForgeConfigSpec.IntValue DROPS_NATURAL;
+    public static ForgeConfigSpec.IntValue DROPS_DUST;
+    public static ForgeConfigSpec.IntValue DROPS_GEM;
+    public static ForgeConfigSpec.IntValue DROPS_METAL;
 
     // Integrations
     private static ForgeConfigSpec.BooleanValue MEKANISM;
@@ -28,12 +43,49 @@ public class OreBushesConfig {
     private static ForgeConfigSpec.BooleanValue BOTANY_POTS;
     private static ForgeConfigSpec.BooleanValue CREATE;
 
+    // General
+    public static ForgeConfigSpec.BooleanValue GRINDING;
+
     // Setup
     static {
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
 
+        COMMON_BUILDER.comment("Growth Config");
+        COMMON_BUILDER.push(CATEGORY_GROWTH);
+
+        CHANCE_COMMON = COMMON_BUILDER.comment("Chance per growth tick for a common ore bush to grow, default is 20")
+                .defineInRange("chance_common", 20, 1, 100);
+
+        CHANCE_UNCOMMON = COMMON_BUILDER.comment("Chance per growth tick for an uncommon ore bush to grow, default is 15")
+                .defineInRange("chance_uncommon", 15, 1, 100);
+
+        CHANCE_RARE = COMMON_BUILDER.comment("Chance per growth tick for a rare ore bush to grow, default is 10")
+                .defineInRange("chance_rare", 10, 1, 100);
+
+        CHANCE_EPIC = COMMON_BUILDER.comment("Chance per growth tick for a epic ore bush to grow, default is 5")
+                .defineInRange("chance_epic", 5, 1, 100);
+
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("Berry Drop Config");
+        COMMON_BUILDER.push(CATEGORY_DROPS);
+
+        DROPS_NATURAL = COMMON_BUILDER.comment("Number of berries a natural ore bush will drop, default is 4")
+                .defineInRange("drops_natural", 4, 1, 10);
+
+        DROPS_DUST = COMMON_BUILDER.comment("Number of berries a dust ore bush will drop, default is 4")
+                .defineInRange("drops_dust", 4, 1, 10);
+
+        DROPS_GEM = COMMON_BUILDER.comment("Number of berries a gem ore bush will drop, default is 1")
+                .defineInRange("drops_gem", 4, 1, 10);
+
+        DROPS_METAL = COMMON_BUILDER.comment("Number of berries a metal ore bush will drop, default is 2")
+                .defineInRange("drops_metal", 4, 2, 10);
+
+        COMMON_BUILDER.pop();
+
         COMMON_BUILDER.comment("Integration Config");
-        COMMON_BUILDER.push(CATEGORY_GENERAL);
+        COMMON_BUILDER.push(CATEGORY_INTEGRATIONS);
 
         BOTANY_POTS = COMMON_BUILDER.comment("Whether or not to allow Ore Bushes to be grown in Botany Pots")
                 .define("integration_botany_pots", true);
@@ -46,6 +98,14 @@ public class OreBushesConfig {
 
         THERMAL = COMMON_BUILDER.comment("Whether or not to include Thermal Machine Recipes for Ore Bush Seeds & Berries")
                 .define("integration_thermal", true);
+
+        COMMON_BUILDER.pop();
+
+        COMMON_BUILDER.comment("General Config");
+        COMMON_BUILDER.push(CATEGORY_GENERAL);
+
+        GRINDING = COMMON_BUILDER.comment("Whether or not to enable berry to grounds recipes")
+                .define("grinding", true);
 
         COMMON_BUILDER.pop();
 

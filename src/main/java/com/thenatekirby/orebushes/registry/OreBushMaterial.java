@@ -1,5 +1,6 @@
 package com.thenatekirby.orebushes.registry;
 
+import com.thenatekirby.orebushes.config.OreBushesConfig;
 import com.thenatekirby.orebushes.registration.OreBushesTags;
 import com.thenatekirby.orebushes.registry.material.*;
 import net.minecraft.block.Block;
@@ -72,31 +73,31 @@ public class OreBushMaterial {
     public int getCropGrowthChance() {
         MaterialRarity rarity = getInfo().getRarity();
         if (rarity == MaterialRarity.COMMON) {
-            return 20;
+            return OreBushesConfig.CHANCE_COMMON.get();
         } else if (rarity == MaterialRarity.UNCOMMON) {
-            return 15;
+            return OreBushesConfig.CHANCE_UNCOMMON.get();
         } else if (rarity == MaterialRarity.RARE) {
-            return 10;
+            return OreBushesConfig.CHANCE_RARE.get();
         } else if (rarity == MaterialRarity.EPIC) {
-            return 5;
+            return OreBushesConfig.CHANCE_EPIC.get();
         }
 
-        return 5;
+        return OreBushesConfig.CHANCE_EPIC.get();
     }
 
     public int getCropResultCount() {
         MaterialType type = getInfo().getType();
         if (type == MaterialType.DUST) {
-            return 4;
+            return OreBushesConfig.DROPS_DUST.get();
         } else if (type == MaterialType.NATURAL) {
-            return 4;
+            return OreBushesConfig.DROPS_NATURAL.get();
         } else if (type == MaterialType.METAL) {
-            return 2;
+            return OreBushesConfig.DROPS_METAL.get();
         } else if (type == MaterialType.GEM) {
-            return 1;
+            return OreBushesConfig.DROPS_GEM.get();
         }
 
-        return 1;
+        return OreBushesConfig.DROPS_GEM.get();
     }
 
     // endregion

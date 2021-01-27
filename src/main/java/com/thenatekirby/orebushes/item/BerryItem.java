@@ -1,7 +1,7 @@
 package com.thenatekirby.orebushes.item;
 
 import com.thenatekirby.orebushes.Localization;
-import com.thenatekirby.orebushes.registration.OreBushItemGroup;
+import com.thenatekirby.orebushes.registration.OreBushesItemGroup;
 import com.thenatekirby.orebushes.registry.OreBush;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.*;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class BerryItem extends Item {
     private static final Food ORE_BERRY = (new Food.Builder()).hunger(2).saturation(0.8F).effect(new EffectInstance(Effects.POISON, 50, 0), 1.0F).build();
-    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushItemGroup.getItemGroup()).food(ORE_BERRY);
+    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup()).food(ORE_BERRY);
 
     private final OreBush oreBush;
 

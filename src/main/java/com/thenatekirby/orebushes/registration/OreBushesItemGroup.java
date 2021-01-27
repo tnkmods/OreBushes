@@ -8,7 +8,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 // ====---------------------------------------------------------------------------====
 
-public class OreBushItemGroup {
+public class OreBushesItemGroup {
+    // TODO: If someone disables iron berries, then we've got no icon...
     private static final ItemGroup itemGroup = new ItemGroup(OreBushes.MOD_ID) {
         @Override
         public ItemStack createIcon() {

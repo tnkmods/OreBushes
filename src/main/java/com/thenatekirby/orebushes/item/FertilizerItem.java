@@ -1,7 +1,7 @@
 package com.thenatekirby.orebushes.item;
 
 import com.thenatekirby.orebushes.block.OreBushBlock;
-import com.thenatekirby.orebushes.registration.OreBushItemGroup;
+import com.thenatekirby.orebushes.registration.OreBushesItemGroup;
 import com.thenatekirby.orebushes.registration.OreBushesItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 // ====---------------------------------------------------------------------------====
 
 public class FertilizerItem extends Item {
-    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushItemGroup.getItemGroup());
+    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup());
 
     public FertilizerItem() {
         super(ITEM_PROPERTIES);

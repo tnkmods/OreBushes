@@ -32,6 +32,10 @@ public class OreBushGroundsEnabledCondition implements IRecipeCondition {
 
     @Override
     public boolean test() {
+        if (!OreBushRegistry.INSTANCE.isGrindingAvailable()) {
+            return false;
+        }
+
         OreBush oreBushInfo = OreBushRegistry.INSTANCE.getOreBushById(oreBush);
         if (oreBushInfo == null) {
             return false;
