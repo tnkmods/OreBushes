@@ -439,7 +439,7 @@ public class OreBushData {
                 .withTier(MaterialTier.TIER_ONE)
                 .withRarity(MaterialRarity.COMMON)
                 .withColor("AAFAFAFA")
-                .withSeedIngredient(RecipeIngredient.fromTag(FORGE.withPath("ingots/nickel")))
+                .withSeedIngredient(RecipeIngredient.fromTag(FORGE.withPath("ingots/iron")))
                 .withSmeltingResult(RecipeIngredient.fromTag(FORGE.withPath("nuggets/iron")))
                 .buildInto(oreBushes);
 
