@@ -45,6 +45,7 @@ public class OreBushesConfig {
 
     // General
     public static ForgeConfigSpec.BooleanValue GRINDING;
+    public static ForgeConfigSpec.BooleanValue DROP_FROM_GRASS;
 
     // Setup
     static {
@@ -106,6 +107,9 @@ public class OreBushesConfig {
 
         GRINDING = COMMON_BUILDER.comment("Whether or not to enable berry to grounds recipes")
                 .define("grinding", true);
+
+        DROP_FROM_GRASS = COMMON_BUILDER.comment("Whether or not to drop essence berry seeds when breaking grass")
+                .define("drop_from_grass", true);
 
         COMMON_BUILDER.pop();
 

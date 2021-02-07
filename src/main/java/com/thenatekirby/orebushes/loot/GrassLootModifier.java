@@ -2,6 +2,7 @@ package com.thenatekirby.orebushes.loot;
 
 import com.google.gson.JsonObject;
 import com.thenatekirby.orebushes.OreBushes;
+import com.thenatekirby.orebushes.config.OreBushesConfig;
 import com.thenatekirby.orebushes.registry.OreBush;
 import com.thenatekirby.orebushes.registry.OreBushRegistry;
 import net.minecraft.item.ItemStack;
@@ -30,7 +31,6 @@ public class GrassLootModifier extends LootModifier {
         if (oreBush != null) {
             oreBush.getSeedItem().ifPresent(seedItem -> generatedLoot.add(new ItemStack(seedItem)));
         }
-
         return generatedLoot;
     }
 

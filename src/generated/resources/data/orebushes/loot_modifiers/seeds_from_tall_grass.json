@@ -1,6 +1,9 @@
 {
   "conditions": [
     {
+      "condition": "orebushes:drop_from_grass"
+    },
+    {
       "condition": "minecraft:random_chance",
       "chance": 0.1
     },

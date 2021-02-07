@@ -56,6 +56,7 @@ public class OreBushes {
 
     private void setup(final FMLCommonSetupEvent event) {
         FertilizerItem.registerDispenserBehavior();
+        OreBushesConditions.onRegisterLootConditions();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
@@ -77,12 +78,12 @@ public class OreBushes {
 
         @SubscribeEvent
         public static void onRegisterRecipeSerializers(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
-            OreBushesRecipeConditions.onRegisterRecipeConditions();
+            OreBushesConditions.onRegisterRecipeConditions();
         }
 
         @SubscribeEvent
         public static void onRegisterGlobalLootSerializers(final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
-            OreBushesGlobalLoot.onRegisterGlobalLoot(event);
+            OreBushesLoot.onRegisterGlobalLoot(event);
         }
     }
 

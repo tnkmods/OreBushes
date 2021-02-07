@@ -1,6 +1,7 @@
 package com.thenatekirby.orebushes.data;
 
 import com.thenatekirby.orebushes.OreBushes;
+import com.thenatekirby.orebushes.loot.GrassLootCondition;
 import com.thenatekirby.orebushes.loot.GrassLootModifier;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.block.Blocks;
@@ -19,12 +20,14 @@ public class OreBushesGlobalLootProvider extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         ILootCondition[] grassConditions = {
+                new GrassLootCondition(),
                 RandomChance.builder(0.1f).build(),
                 Inverted.builder(MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS))).build(),
                 BlockStateProperty.builder(Blocks.GRASS).build()
         };
 
         ILootCondition[] tallGrassConditions = {
+                new GrassLootCondition(),
                 RandomChance.builder(0.1f).build(),
                 Inverted.builder(MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS))).build(),
                 BlockStateProperty.builder(Blocks.TALL_GRASS).build()
