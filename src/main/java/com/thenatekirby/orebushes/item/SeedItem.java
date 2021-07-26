@@ -11,6 +11,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
@@ -21,7 +22,7 @@ import java.util.List;
 // ====---------------------------------------------------------------------------====
 
 public class SeedItem extends BlockNamedItem {
-    private static Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup());
+    private static Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(OreBushesItemGroup.getItemGroup());
     private OreBush oreBush;
 
     public SeedItem(OreBush oreBush) {
@@ -34,23 +35,23 @@ public class SeedItem extends BlockNamedItem {
 
     @Override
     @Nonnull
-    public ITextComponent getDisplayName(@Nonnull ItemStack stack) {
+    public ITextComponent getName(@Nonnull ItemStack stack) {
         return Localization.SEEDS.withReplacement("MATERIAL", oreBush.getName()).makeTextComponent();
     }
 
     @Override
-    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flagIn) {
+    public void appendHoverText(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flagIn) {
         MaterialTier tier = oreBush.getMaterial().getInfo().getTier();
         if (!tier.isMinTier()) {
             String displayName = tier.getDisplayName();
             if (tier.isMaxTier()) {
-                tooltip.add(Localization.SEEDS_DESC_SINGLE.withReplacement("TIER", displayName).makeTextComponent().mergeStyle(TextFormatting.YELLOW));
+                tooltip.add(Localization.SEEDS_DESC_SINGLE.withReplacement("TIER", displayName).makeTextComponent().withStyle(TextFormatting.YELLOW));
             } else {
-                tooltip.add(Localization.SEEDS_DESC_MULTI.withReplacement("TIER", displayName).makeTextComponent().mergeStyle(TextFormatting.YELLOW));
+                tooltip.add(Localization.SEEDS_DESC_MULTI.withReplacement("TIER", displayName).makeTextComponent().withStyle(TextFormatting.YELLOW));
             }
         }
 
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     // endregion
@@ -58,9 +59,9 @@ public class SeedItem extends BlockNamedItem {
     // region Item Group
 
     @Override
-    public void fillItemGroup(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
+    public void fillItemCategory(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
         if (this.oreBush.isEnabled()) {
-            super.fillItemGroup(group, items);
+            super.fillItemCategory(group, items);
         }
     }
 

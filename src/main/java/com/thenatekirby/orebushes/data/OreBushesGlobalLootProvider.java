@@ -21,16 +21,16 @@ public class OreBushesGlobalLootProvider extends GlobalLootModifierProvider {
     protected void start() {
         ILootCondition[] grassConditions = {
                 new GrassLootCondition(),
-                RandomChance.builder(0.1f).build(),
-                Inverted.builder(MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS))).build(),
-                BlockStateProperty.builder(Blocks.GRASS).build()
+                RandomChance.randomChance(0.1f).build(),
+                Inverted.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS))).build(),
+                BlockStateProperty.hasBlockStateProperties(Blocks.GRASS).build()
         };
 
         ILootCondition[] tallGrassConditions = {
                 new GrassLootCondition(),
-                RandomChance.builder(0.1f).build(),
-                Inverted.builder(MatchTool.builder(ItemPredicate.Builder.create().item(Items.SHEARS))).build(),
-                BlockStateProperty.builder(Blocks.TALL_GRASS).build()
+                RandomChance.randomChance(0.1f).build(),
+                Inverted.invert(MatchTool.toolMatches(ItemPredicate.Builder.item().of(Items.SHEARS))).build(),
+                BlockStateProperty.hasBlockStateProperties(Blocks.TALL_GRASS).build()
         };
 
         add("seeds_from_grass", new GrassLootModifier.Serializer(), new GrassLootModifier(grassConditions));

@@ -18,7 +18,7 @@ public class MutableItemModel extends BlockModel {
 
     @SuppressWarnings("deprecation")
     public MutableItemModel(BlockModel model) {
-        super(model.getParentLocation(), model.getElements(), model.textures, model.ambientOcclusion, model.getGuiLight(), model.getAllTransforms(), model.getOverrides());
+        super(model.getParentLocation(), model.getElements(), model.textureMap, model.hasAmbientOcclusion, model.getGuiLight(), model.getTransforms(), model.getOverrides());
         this.model = model;
         this.name = model.name;
         this.parent = model.parent;
@@ -29,16 +29,16 @@ public class MutableItemModel extends BlockModel {
         BlockModel newModel = new BlockModel(
                 this.model.getParentLocation(),
                 new ArrayList<>(),
-                Maps.newHashMap(this.model.textures),
-                this.model.isAmbientOcclusion(),
+                Maps.newHashMap(this.model.textureMap),
+                this.model.hasAmbientOcclusion(),
                 this.model.getGuiLight(),
-                this.model.getAllTransforms(),
+                this.model.getTransforms(),
                 Lists.newArrayList(this.model.getOverrides())
         );
         newModel.name = this.model.name;
         newModel.parent = this.model.parent;
 
-        newModel.textures.put(key, Either.left(new RenderMaterial(AtlasTexture.LOCATION_BLOCKS_TEXTURE, new ResourceLocation(value))));
+        newModel.textureMap.put(key, Either.left(new RenderMaterial(AtlasTexture.LOCATION_BLOCKS, new ResourceLocation(value))));
         return new MutableItemModel(newModel);
     }
 }

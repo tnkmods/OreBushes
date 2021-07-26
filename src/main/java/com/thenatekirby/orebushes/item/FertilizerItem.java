@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 // ====---------------------------------------------------------------------------====
 
 public class FertilizerItem extends Item {
-    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup());
+    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(OreBushesItemGroup.getItemGroup());
 
     public FertilizerItem() {
         super(ITEM_PROPERTIES);
@@ -31,10 +31,10 @@ public class FertilizerItem extends Item {
 
     @Override
     @Nonnull
-    public ActionResultType onItemUse(@Nonnull ItemUseContext context) {
-        World world = context.getWorld();
-        BlockPos blockPos = context.getPos();
-        ItemStack itemStack = context.getItem();
+    public ActionResultType useOn(@Nonnull ItemUseContext context) {
+        World world = context.getLevel();
+        BlockPos blockPos = context.getClickedPos();
+        ItemStack itemStack = context.getItemInHand();
 
         if (FertilizerItem.applyBonemeal(itemStack, world, blockPos)) {
             return ActionResultType.SUCCESS;
@@ -47,9 +47,9 @@ public class FertilizerItem extends Item {
         BlockState blockState = world.getBlockState(blockPos);
         if (blockState.getBlock() instanceof OreBushBlock) {
             OreBushBlock oreBushBlock = (OreBushBlock) blockState.getBlock();
-            if (!world.isRemote) {
-                if (oreBushBlock.onEnrichedBonemeal((ServerWorld) world, world.rand, blockPos, blockState)) {
-                    world.playEvent(2005, blockPos, 0);
+            if (!world.isClientSide) {
+                if (oreBushBlock.onEnrichedBonemeal((ServerWorld) world, world.random, blockPos, blockState)) {
+                    world.levelEvent(2005, blockPos, 0);
                     itemStack.shrink(1);
                 }
             }
@@ -65,18 +65,18 @@ public class FertilizerItem extends Item {
     // region Dispenser
 
     public static void registerDispenserBehavior() {
-        DispenserBlock.registerDispenseBehavior(OreBushesItems.ENRICHED_BONE_MEAL, new OptionalDispenseBehavior() {
+        DispenserBlock.registerBehavior(OreBushesItems.ENRICHED_BONE_MEAL, new OptionalDispenseBehavior() {
             @Nonnull
             @Override
-            protected ItemStack dispenseStack(IBlockSource source, ItemStack stack) {
-                setSuccessful(true);
-                World world = source.getWorld();
-                BlockPos blockPos = source.getBlockPos().offset(source.getBlockState().get(DispenserBlock.FACING));
+            protected ItemStack execute(IBlockSource source, ItemStack stack) {
+                setSuccess(true);
+                World world = source.getLevel();
+                BlockPos blockPos = source.getPos().relative(source.getBlockState().getValue(DispenserBlock.FACING));
 
                 if (!FertilizerItem.applyBonemeal(stack, world, blockPos)) {
-                    setSuccessful(false);
-                } else if (!world.isRemote) {
-                    world.playEvent(2005, blockPos, 0);
+                    setSuccess(false);
+                } else if (!world.isClientSide) {
+                    world.levelEvent(2005, blockPos, 0);
                 }
 
                 return stack;

@@ -47,8 +47,8 @@ public class OreBushesModels {
 
         OreBushRegistry.INSTANCE.getAllOreBushes().forEach(oreBush -> {
             oreBush.getBushBlock().ifPresent(block -> {
-                block.getStateContainer().getValidStates().forEach(state -> {
-                    String propString = BlockModelShapes.getPropertyMapString(state.getValues());
+                block.getStateDefinition().getPossibleStates().forEach(state -> {
+                    String propString = BlockModelShapes.statePropertiesToString(state.getValues());
                     ModelResourceLocation defaultLocation = new ModelResourceLocation(OreBushes.MOD_ID + ":berry_bush_blank", propString);
                     ModelLoader.addSpecialModel(defaultLocation);
                     BUSH_MODELS.put(defaultLocation, new ModelResourceLocation(block.getRegistryName(), propString));
@@ -63,7 +63,7 @@ public class OreBushesModels {
 
         Map<ResourceLocation, IBakedModel> registry = event.getModelRegistry();
         ModelBakery bakery = event.getModelLoader();
-        IBakedModel modelMissing = registry.get(ModelLoader.MODEL_MISSING);
+        IBakedModel modelMissing = registry.get(ModelLoader.MISSING_MODEL_LOCATION);
 
         BUSH_MODELS.asMap().forEach((id, resourceLocations) -> {
             IBakedModel defaultModel = registry.getOrDefault(id, modelMissing);
@@ -74,11 +74,11 @@ public class OreBushesModels {
             resourceLocations.forEach(modelLocation -> registry.put(modelLocation, defaultModel));
         });
 
-        IUnbakedModel berryModel = bakery.getUnbakedModel(BERRY_BLANK);
+        IUnbakedModel berryModel = bakery.getModel(BERRY_BLANK);
         MutableItemModel berryModelWrapper = new MutableItemModel((BlockModel) berryModel);
         ItemModelGenerator generator = new ItemModelGenerator();
 
-        IUnbakedModel seedModel = bakery.getUnbakedModel(SEED_BLANK);
+        IUnbakedModel seedModel = bakery.getModel(SEED_BLANK);
         MutableItemModel seedModelWrapper = new MutableItemModel((BlockModel) seedModel);
 
         OreBushRegistry.INSTANCE.getAllOreBushes().forEach(oreBush -> {
@@ -99,8 +99,8 @@ public class OreBushesModels {
                                 .withRetexturedLayer("layer0", BERRY_BLANK.toString())
                                 .withRetexturedLayer("layer1", BERRY_OVERLAY.toString());
 
-                        BlockModel generated = generator.makeItemModel(bakery.getSpriteMap()::getSprite, mutableModel);
-                        IBakedModel bakedModel = generated.bakeModel(bakery, generated, bakery.getSpriteMap()::getSprite, ModelRotation.X0_Y0, modelResourceLocation, false);
+                        BlockModel generated = generator.generateBlockModel(bakery.getSpriteMap()::getSprite, mutableModel);
+                        IBakedModel bakedModel = generated.bake(bakery, generated, bakery.getSpriteMap()::getSprite, ModelRotation.X0_Y0, modelResourceLocation, false);
                         registry.replace(modelResourceLocation, bakedModel);
                     }
                 }
@@ -118,8 +118,8 @@ public class OreBushesModels {
                         MutableItemModel mutableModel = seedModelWrapper
                                 .withRetexturedLayer("layer0", SEED_BLANK.toString());
 
-                        BlockModel generated = generator.makeItemModel(bakery.getSpriteMap()::getSprite, mutableModel);
-                        IBakedModel bakedModel = generated.bakeModel(bakery, generated, bakery.getSpriteMap()::getSprite, ModelRotation.X0_Y0, modelResourceLocation, false);
+                        BlockModel generated = generator.generateBlockModel(bakery.getSpriteMap()::getSprite, mutableModel);
+                        IBakedModel bakedModel = generated.bake(bakery, generated, bakery.getSpriteMap()::getSprite, ModelRotation.X0_Y0, modelResourceLocation, false);
                         registry.replace(modelResourceLocation, bakedModel);
                     }
                 }
@@ -137,8 +137,8 @@ public class OreBushesModels {
                         MutableItemModel mutableModel = seedModelWrapper
                                 .withRetexturedLayer("layer0", GROUNDS_BLANK.toString());
 
-                        BlockModel generated = generator.makeItemModel(bakery.getSpriteMap()::getSprite, mutableModel);
-                        IBakedModel bakedModel = generated.bakeModel(bakery, generated, bakery.getSpriteMap()::getSprite, ModelRotation.X0_Y0, modelResourceLocation, false);
+                        BlockModel generated = generator.generateBlockModel(bakery.getSpriteMap()::getSprite, mutableModel);
+                        IBakedModel bakedModel = generated.bake(bakery, generated, bakery.getSpriteMap()::getSprite, ModelRotation.X0_Y0, modelResourceLocation, false);
                         registry.replace(modelResourceLocation, bakedModel);
                     }
                 }
@@ -151,7 +151,7 @@ public class OreBushesModels {
 
     @SubscribeEvent
     public void onTextureStich(TextureStitchEvent.Pre event) {
-        if (event.getMap().getTextureLocation().equals(BLOCK_ATLAS)) {
+        if (event.getMap().location().equals(BLOCK_ATLAS)) {
             event.addSprite(BERRY_BLANK);
             event.addSprite(SEED_BLANK);
             event.addSprite(GROUNDS_BLANK);
@@ -185,7 +185,7 @@ public class OreBushesModels {
     public static void onClientSetup() {
         OreBushRegistry.INSTANCE.getAllOreBushes().forEach(oreBush -> {
             if (oreBush.isEnabled()) {
-                oreBush.getBushBlock().ifPresent(block -> RenderTypeLookup.setRenderLayer(block, RenderType.getCutoutMipped()));
+                oreBush.getBushBlock().ifPresent(block -> RenderTypeLookup.setRenderLayer(block, RenderType.cutoutMipped()));
             }
         });
     }

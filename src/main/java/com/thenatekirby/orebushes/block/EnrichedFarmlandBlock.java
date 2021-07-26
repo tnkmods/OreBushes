@@ -26,9 +26,9 @@ public class EnrichedFarmlandBlock extends FarmlandBlock {
     private MaterialTier tier;
 
     public EnrichedFarmlandBlock(MaterialTier tier) {
-        super(Block.Properties.from(Blocks.FARMLAND));
+        super(AbstractBlock.Properties.copy(Blocks.FARMLAND));
         this.tier = tier;
-        setDefaultState(getDefaultState().with(MOISTURE, 7));
+        registerDefaultState(defaultBlockState().setValue(MOISTURE, 7));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class EnrichedFarmlandBlock extends FarmlandBlock {
     }
 
     @Override
-    public void onFallenUpon(World worldIn, @Nonnull BlockPos pos, Entity entityIn, float fallDistance) {
+    public void fallOn(World worldIn, @Nonnull BlockPos pos, Entity entityIn, float fallDistance) {
     }
 
     @Override
@@ -54,15 +54,15 @@ public class EnrichedFarmlandBlock extends FarmlandBlock {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (tier == MaterialTier.TIER_ONE) {
-            tooltip.add(Localization.TIER_ONE_FARMLAND_DESC.mergeStyle(TextFormatting.GRAY));
+            tooltip.add(Localization.TIER_ONE_FARMLAND_DESC.withStyle(TextFormatting.GRAY));
         } else if (tier == MaterialTier.TIER_TWO) {
-            tooltip.add(Localization.TIER_TWO_FARMLAND_DESC.mergeStyle(TextFormatting.GRAY));
+            tooltip.add(Localization.TIER_TWO_FARMLAND_DESC.withStyle(TextFormatting.GRAY));
         } else if (tier == MaterialTier.TIER_THREE) {
-            tooltip.add(Localization.TIER_THREE_FARMLAND_DESC.mergeStyle(TextFormatting.GRAY));
+            tooltip.add(Localization.TIER_THREE_FARMLAND_DESC.withStyle(TextFormatting.GRAY));
         }
 
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 }

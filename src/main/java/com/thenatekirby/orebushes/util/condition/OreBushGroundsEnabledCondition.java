@@ -66,7 +66,7 @@ public class OreBushGroundsEnabledCondition implements IRecipeCondition {
 
         @Override
         public OreBushGroundsEnabledCondition read(JsonObject json) {
-            String bush = JSONUtils.getString(json, "bush");
+            String bush = JSONUtils.getAsString(json, "bush");
             return new OreBushGroundsEnabledCondition(new ResourceLocation(bush));
         }
 

@@ -29,7 +29,7 @@ public class OreBushesRecipeProvider extends RecipeProvider {
     }
 
     @Override
-    protected void registerRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
+    protected void buildShapelessRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
         registerBaseRecipes(consumer);
         registerOreBushRecipes(consumer);
     }

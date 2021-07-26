@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 // ====---------------------------------------------------------------------------====
 
 public class DustItem extends Item {
-    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup());
+    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(OreBushesItemGroup.getItemGroup());
 
     public DustItem() {
         super(ITEM_PROPERTIES);

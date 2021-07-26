@@ -61,7 +61,7 @@ public class OreBushIntegrationEnabledCondition implements IRecipeCondition {
 
         @Override
         public OreBushIntegrationEnabledCondition read(JsonObject json) {
-            String integration = JSONUtils.getString(json, "integration");
+            String integration = JSONUtils.getAsString(json, "integration");
             return new OreBushIntegrationEnabledCondition(integration);
         }
 

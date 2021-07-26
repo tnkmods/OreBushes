@@ -47,9 +47,9 @@ public class OreBushesLootTablesProvider extends LootTableProvider {
     private static class OreBushesBlockLootTables extends BlockLootTables {
         @Override
         protected void addTables() {
-            registerDropSelfLootTable(OreBushesBlocks.TIER_ONE_FARMLAND.asBlock());
-            registerDropSelfLootTable(OreBushesBlocks.TIER_TWO_FARMLAND.asBlock());
-            registerDropSelfLootTable(OreBushesBlocks.TIER_THREE_FARMLAND.asBlock());
+            dropSelf(OreBushesBlocks.TIER_ONE_FARMLAND.asBlock());
+            dropSelf(OreBushesBlocks.TIER_TWO_FARMLAND.asBlock());
+            dropSelf(OreBushesBlocks.TIER_THREE_FARMLAND.asBlock());
         }
 
         @Override

@@ -13,8 +13,10 @@ import javax.annotation.Nonnull;
 
 // ====---------------------------------------------------------------------------====
 
+import net.minecraft.item.Item.Properties;
+
 public class GroundsItem extends Item {
-    private static final Properties ITEM_PROPERTIES = new Properties().group(OreBushesItemGroup.getItemGroup());
+    private static final Properties ITEM_PROPERTIES = new Properties().tab(OreBushesItemGroup.getItemGroup());
 
     private OreBush oreBush;
 
@@ -24,15 +26,15 @@ public class GroundsItem extends Item {
     }
 
     @Override
-    public void fillItemGroup(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
+    public void fillItemCategory(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
         if (this.oreBush.isEnabled()) {
-            super.fillItemGroup(group, items);
+            super.fillItemCategory(group, items);
         }
     }
 
     @Override
     @Nonnull
-    public ITextComponent getDisplayName(@Nonnull ItemStack stack) {
+    public ITextComponent getName(@Nonnull ItemStack stack) {
         return Localization.GROUNDS.withReplacement("MATERIAL", oreBush.getName()).makeTextComponent();
     }
 }

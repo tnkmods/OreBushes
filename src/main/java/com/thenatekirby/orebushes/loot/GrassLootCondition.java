@@ -25,7 +25,7 @@ public class GrassLootCondition implements ILootCondition {
 
     @Nonnull
     @Override
-    public LootConditionType func_230419_b_() {
+    public LootConditionType getType() {
         return GRASS_LOOT;
     }
 

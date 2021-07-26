@@ -35,7 +35,7 @@ public abstract class OreBushesMaterialsProvider implements IDataProvider {
     public abstract void registerMaterials(Consumer<IFinishedMaterial> consumer);
 
     @Override
-    public void act(@Nonnull DirectoryCache cache) throws IOException {
+    public void run(@Nonnull DirectoryCache cache) throws IOException {
         Path path = this.generator.getOutputFolder();
         Set<ResourceLocation> set = Sets.newHashSet();
 
@@ -55,8 +55,8 @@ public abstract class OreBushesMaterialsProvider implements IDataProvider {
     private static void saveMaterial(DirectoryCache cache, JsonObject recipeJson, Path outputPath) {
         try {
             String json = GSON.toJson(recipeJson);
-            String hash = HASH_FUNCTION.hashUnencodedChars(json).toString();
-            if (!Objects.equals(cache.getPreviousHash(outputPath), hash) || !Files.exists(outputPath)) {
+            String hash = SHA1.hashUnencodedChars(json).toString();
+            if (!Objects.equals(cache.getHash(outputPath), hash) || !Files.exists(outputPath)) {
                 Files.createDirectories(outputPath.getParent());
 
                 try (BufferedWriter bufferedwriter = Files.newBufferedWriter(outputPath)) {
@@ -64,7 +64,7 @@ public abstract class OreBushesMaterialsProvider implements IDataProvider {
                 }
             }
 
-            cache.recordHash(outputPath, hash);
+            cache.putNew(outputPath, hash);
 
         } catch (IOException ioexception) {
             OreBushes.getLogger().error("Couldn't save recipe {}", recipeJson, ioexception);

@@ -36,18 +36,18 @@ import java.util.Random;
 
 @SuppressWarnings("deprecation")
 public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
-    private static final IntegerProperty AGE = BlockStateProperties.AGE_0_3;
-    private static final VoxelShape BUSHLING_SHAPE = Block.makeCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
-    private static final VoxelShape GROWING_SHAPE = Block.makeCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
+    private static final IntegerProperty AGE = BlockStateProperties.AGE_3;
+    private static final VoxelShape BUSHLING_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
+    private static final VoxelShape GROWING_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
 
-    private static final Block.Properties BLOCK_PROPERTIES = Block.Properties.from(Blocks.WHEAT);
+    private static final AbstractBlock.Properties BLOCK_PROPERTIES = AbstractBlock.Properties.copy(Blocks.WHEAT);
 
     private final OreBush oreBush;
 
     public OreBushBlock(OreBush oreBush) {
         super(BLOCK_PROPERTIES);
 
-        this.setDefaultState(this.getStateContainer().getBaseState().with(AGE, 0));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0));
         this.oreBush = oreBush;
     }
 
@@ -55,26 +55,26 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
     // region State
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
 
     @Override
-    public boolean ticksRandomly(BlockState state) {
-        return state.get(AGE) < 3;
+    public boolean isRandomlyTicking(BlockState state) {
+        return state.getValue(AGE) < 3;
     }
 
     @Nonnull
-    public BlockState updatePostPlacement(BlockState stateIn, @Nonnull Direction facing, @Nonnull BlockState facingState, @Nonnull IWorld worldIn, @Nonnull BlockPos currentPos, @Nonnull BlockPos facingPos) {
-        return !stateIn.isValidPosition(worldIn, currentPos) ? Blocks.AIR.getDefaultState() : super.updatePostPlacement(stateIn, facing, facingState, worldIn, currentPos, facingPos);
+    public BlockState updateShape(BlockState stateIn, @Nonnull Direction facing, @Nonnull BlockState facingState, @Nonnull IWorld worldIn, @Nonnull BlockPos currentPos, @Nonnull BlockPos facingPos) {
+        return !stateIn.canSurvive(worldIn, currentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(stateIn, facing, facingState, worldIn, currentPos, facingPos);
     }
 
     @Nonnull
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-        if (state.get(AGE) == 0) {
+        if (state.getValue(AGE) == 0) {
             return BUSHLING_SHAPE;
         } else {
-            return state.get(AGE) < 3 ? GROWING_SHAPE : super.getShape(state, worldIn, pos, context);
+            return state.getValue(AGE) < 3 ? GROWING_SHAPE : super.getShape(state, worldIn, pos, context);
         }
     }
 
@@ -85,7 +85,7 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
 
     @Nonnull
     @Override
-    public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state) {
+    public ItemStack getCloneItemStack(IBlockReader worldIn, BlockPos pos, BlockState state) {
         return new ItemStack(oreBush.getBerryItem().orElse(Items.AIR));
     }
 
@@ -95,18 +95,18 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
         BlockState blockState = world.getBlockState(pos);
 
         if (blockState.getBlock() != this) {
-            return getDefaultState();
+            return defaultBlockState();
         }
 
         return blockState;
     }
 
-    protected boolean isValidGround(BlockState state, IBlockReader world, BlockPos pos) {
-        return (state.isIn(oreBush.getMaterial().getFarmlandTag()));
+    protected boolean mayPlaceOn(BlockState state, IBlockReader world, BlockPos pos) {
+        return (state.is(oreBush.getMaterial().getFarmlandTag()));
     }
 
-    public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos) {
-        return (world.getBlockState(pos.offset(Direction.DOWN)).isIn(oreBush.getMaterial().getFarmlandTag()));
+    public boolean canSurvive(BlockState state, IWorldReader world, BlockPos pos) {
+        return (world.getBlockState(pos.relative(Direction.DOWN)).is(oreBush.getMaterial().getFarmlandTag()));
     }
 
     @SuppressWarnings("unused")
@@ -123,7 +123,7 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
 
     @Override
     @Nonnull
-    public IFormattableTextComponent getTranslatedName() {
+    public IFormattableTextComponent getName() {
         return new StringTextComponent(oreBush.getName() + " Berry Bush");
     }
 
@@ -133,8 +133,8 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
 
     @Override
     public void randomTick(BlockState state, @Nonnull ServerWorld worldIn, @Nonnull BlockPos pos, @Nonnull Random random) {
-        int age = state.get(AGE);
-        if (age >= 3 || worldIn.getLightSubtracted(pos.up(), 0) < 9) {
+        int age = state.getValue(AGE);
+        if (age >= 3 || worldIn.getRawBrightness(pos.above(), 0) < 9) {
             return;
         }
 
@@ -143,35 +143,35 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
         boolean grow = roll <= chance;
 
         if (ForgeHooks.onCropsGrowPre(worldIn, pos, state, grow)) {
-            worldIn.setBlockState(pos, state.with(AGE, age + 1), 2);
+            worldIn.setBlock(pos, state.setValue(AGE, age + 1), 2);
             ForgeHooks.onCropsGrowPost(worldIn, pos, state);
         }
     }
 
     @Override
-    public boolean canGrow(@Nonnull IBlockReader worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(@Nonnull IBlockReader worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, boolean isClient) {
         return false;
     }
 
     @Override
-    public boolean canUseBonemeal(@Nonnull World worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
+    public boolean isBonemealSuccess(@Nonnull World worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
         return false;
     }
 
     @Override
-    public void grow(@Nonnull ServerWorld worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
+    public void performBonemeal(@Nonnull ServerWorld worldIn, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
     }
 
     @SuppressWarnings("unused")
     public boolean onEnrichedBonemeal(@Nonnull ServerWorld world, @Nonnull Random rand, @Nonnull BlockPos pos, @Nonnull BlockState state) {
-        int nextAge = state.get(AGE) + 1;
-        if (state.get(AGE) < 3) {
-            world.setBlockState(pos, state.with(AGE, nextAge), 2);
+        int nextAge = state.getValue(AGE) + 1;
+        if (state.getValue(AGE) < 3) {
+            world.setBlock(pos, state.setValue(AGE, nextAge), 2);
             return true;
 
         } else {
             spawnBerryDrops(world, pos);
-            world.setBlockState(pos, state.with(AGE, 1), 2);
+            world.setBlock(pos, state.setValue(AGE, 1), 2);
             return false;
         }
     }
@@ -185,27 +185,27 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
             int count = oreBush.getMaterial().getCropResultCount();
             ItemStack itemStack = new ItemStack(item, count);
 
-            spawnAsEntity(world, blockPos, itemStack);
+            popResource(world, blockPos, itemStack);
         });
     }
 
     @Nonnull
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (player.getHeldItem(handIn).getItem() == OreBushesItems.ENRICHED_BONE_MEAL.toItem()) {
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        if (player.getItemInHand(handIn).getItem() == OreBushesItems.ENRICHED_BONE_MEAL.toItem()) {
             return ActionResultType.PASS;
         }
 
-        int age = state.get(AGE);
+        int age = state.getValue(AGE);
         if (age == 3) {
             spawnBerryDrops(worldIn, pos);
 
-            worldIn.playSound(null, pos, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.rand.nextFloat() * 0.4F);
-            worldIn.setBlockState(pos, state.with(AGE, 1), 2);
+            worldIn.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0F, 0.8F + worldIn.random.nextFloat() * 0.4F);
+            worldIn.setBlock(pos, state.setValue(AGE, 1), 2);
 
-            return ActionResultType.func_233537_a_(worldIn.isRemote);
+            return ActionResultType.sidedSuccess(worldIn.isClientSide);
 
         } else {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         }
     }
 
@@ -220,7 +220,7 @@ public class OreBushBlock extends BushBlock implements IGrowable, IPlantable {
         List<ItemStack> itemStacks = new ArrayList<>();
         oreBush.getSeedItem().ifPresent(item -> itemStacks.add(new ItemStack(item)));
 
-        if (state.get(AGE) == 3) {
+        if (state.getValue(AGE) == 3) {
             oreBush.getBerryItem().ifPresent(item -> itemStacks.add(new ItemStack(item, oreBush.getMaterial().getCropResultCount())));
         }
 

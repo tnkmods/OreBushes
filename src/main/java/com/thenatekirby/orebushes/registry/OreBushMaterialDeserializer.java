@@ -34,40 +34,40 @@ public class OreBushMaterialDeserializer {
             JsonObject json = GSON.fromJson(fileReader, JsonObject.class);
 
             if (json.has("requires_mod")) {
-                String modId = JSONUtils.getString(json, "requires_mod");
+                String modId = JSONUtils.getAsString(json, "requires_mod");
                 if (!ModList.get().isLoaded(modId)) {
                     return null;
                 }
             }
 
-            ResourceLocation materialId = new ResourceLocation(JSONUtils.getString(json, "id"));
+            ResourceLocation materialId = new ResourceLocation(JSONUtils.getAsString(json, "id"));
 
-            JsonObject infoJson = JSONUtils.getJsonObject(json, "info");
-            MaterialRarity rarity = MaterialRarity.fromJson(JSONUtils.getString(infoJson, "rarity", "unknown"));
+            JsonObject infoJson = JSONUtils.getAsJsonObject(json, "info");
+            MaterialRarity rarity = MaterialRarity.fromJson(JSONUtils.getAsString(infoJson, "rarity", "unknown"));
             if (rarity == null) {
-                OreBushes.getLogger().info("OreBush id: {} has unknown rarity {}, skipping.", materialId, JSONUtils.getString(infoJson, "rarity"));
+                OreBushes.getLogger().info("OreBush id: {} has unknown rarity {}, skipping.", materialId, JSONUtils.getAsString(infoJson, "rarity"));
                 return null;
             }
 
-            MaterialType type = MaterialType.fromJson(JSONUtils.getString(infoJson, "type", "unknown"));
+            MaterialType type = MaterialType.fromJson(JSONUtils.getAsString(infoJson, "type", "unknown"));
             if (type == null) {
-                OreBushes.getLogger().info("OreBush id: {} has unknown type {}, skipping.", materialId, JSONUtils.getString(infoJson, "type"));
+                OreBushes.getLogger().info("OreBush id: {} has unknown type {}, skipping.", materialId, JSONUtils.getAsString(infoJson, "type"));
                 return null;
             }
 
-            MaterialTier tier = MaterialTier.fromJson(JSONUtils.getInt(infoJson, "tier", -1));
+            MaterialTier tier = MaterialTier.fromJson(JSONUtils.getAsInt(infoJson, "tier", -1));
             if (tier == null) {
-                OreBushes.getLogger().info("OreBush id: {} has unknown tier {}, skipping.", materialId, JSONUtils.getInt(infoJson, "tier"));
+                OreBushes.getLogger().info("OreBush id: {} has unknown tier {}, skipping.", materialId, JSONUtils.getAsInt(infoJson, "tier"));
                 return null;
             }
 
-            long color = Long.parseLong(JSONUtils.getString(infoJson, "color"), 16);
-            boolean mulchable = JSONUtils.getBoolean(infoJson, "grindable", true);
+            long color = Long.parseLong(JSONUtils.getAsString(infoJson, "color"), 16);
+            boolean mulchable = JSONUtils.getAsBoolean(infoJson, "grindable", true);
 
             MaterialInfo materialInfo = MaterialInfo.make(type, tier, rarity, (int) color, mulchable);
 
-            String name = JSONUtils.getString(json, "name");
-            boolean isEnabled = JSONUtils.getBoolean(json, "enabled", true);
+            String name = JSONUtils.getAsString(json, "name");
+            boolean isEnabled = JSONUtils.getAsBoolean(json, "enabled", true);
 
             return new OreBushMaterial(materialId, name, materialInfo, isEnabled);
 

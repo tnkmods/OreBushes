@@ -12,7 +12,7 @@ public class OreBushesItemGroup {
     // TODO: If someone disables iron berries, then we've got no icon...
     private static final ItemGroup itemGroup = new ItemGroup(OreBushes.MOD_ID) {
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             return new ItemStack(ForgeRegistries.ITEMS.getValue(OreBushes.MOD.withPath("berry_iron")));
         }
     };
@@ -22,6 +22,6 @@ public class OreBushesItemGroup {
     }
 
     static Item.Properties getDefaultBlockItemProperties() {
-        return new Item.Properties().group(itemGroup);
+        return new Item.Properties().tab(itemGroup);
     }
 }

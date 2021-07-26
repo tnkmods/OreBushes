@@ -170,8 +170,8 @@ public class OreBushRegistry {
             registry.register(berry);
             bush.setBerryItem(berry);
 
-            ComposterBlock.CHANCES.putIfAbsent(seed, 0.3f);
-            ComposterBlock.CHANCES.putIfAbsent(berry, 0.3f);
+            ComposterBlock.COMPOSTABLES.putIfAbsent(seed, 0.3f);
+            ComposterBlock.COMPOSTABLES.putIfAbsent(berry, 0.3f);
 
             // Grounds
             if (isGrindingAvailable()) {
@@ -181,7 +181,7 @@ public class OreBushRegistry {
                 registry.register(grounds);
                 bush.setGroundsItem(grounds);
 
-                ComposterBlock.CHANCES.putIfAbsent(grounds, 0.3f);
+                ComposterBlock.COMPOSTABLES.putIfAbsent(grounds, 0.3f);
             }
         });
     }

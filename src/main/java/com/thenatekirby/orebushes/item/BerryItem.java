@@ -19,8 +19,8 @@ import java.util.List;
 // ====---------------------------------------------------------------------------====
 
 public class BerryItem extends Item {
-    private static final Food ORE_BERRY = (new Food.Builder()).hunger(2).saturation(0.8F).effect(new EffectInstance(Effects.POISON, 50, 0), 1.0F).build();
-    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().group(OreBushesItemGroup.getItemGroup()).food(ORE_BERRY);
+    private static final Food ORE_BERRY = (new Food.Builder()).nutrition(2).saturationMod(0.8F).effect(new EffectInstance(Effects.POISON, 50, 0), 1.0F).build();
+    private static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(OreBushesItemGroup.getItemGroup()).food(ORE_BERRY);
 
     private final OreBush oreBush;
 
@@ -34,18 +34,18 @@ public class BerryItem extends Item {
 
     @Override
     @Nonnull
-    public ITextComponent getDisplayName(@Nonnull ItemStack stack) {
+    public ITextComponent getName(@Nonnull ItemStack stack) {
         return Localization.BERRIES.withReplacement("MATERIAL", oreBush.getName()).makeTextComponent();
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void appendHoverText(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         oreBush.getBushBlock().ifPresent(bushBlock -> {
-            String bushBlockName = bushBlock.getTranslatedName().getString();
-            tooltip.add(Localization.BERRY_DESC.withReplacement("BUSH", bushBlockName).makeTextComponent().mergeStyle(TextFormatting.GRAY));
+            String bushBlockName = bushBlock.getName().getString();
+            tooltip.add(Localization.BERRY_DESC.withReplacement("BUSH", bushBlockName).makeTextComponent().withStyle(TextFormatting.GRAY));
         });
 
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
 
     // endregion
@@ -53,9 +53,9 @@ public class BerryItem extends Item {
     // region Item Group
 
     @Override
-    public void fillItemGroup(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
+    public void fillItemCategory(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
         if (this.oreBush.isEnabled()) {
-            super.fillItemGroup(group, items);
+            super.fillItemCategory(group, items);
         }
     }
 

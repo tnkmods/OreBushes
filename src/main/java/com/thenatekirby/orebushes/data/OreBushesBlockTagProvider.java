@@ -19,23 +19,23 @@ public class OreBushesBlockTagProvider extends BlockTagsProvider {
     }
 
     @Override
-    protected void registerTags() {
-        getOrCreateBuilder(OreBushesTags.Blocks.TIER_ONE_FARMLAND).add(
+    protected void addTags() {
+        tag(OreBushesTags.Blocks.TIER_ONE_FARMLAND).add(
                 OreBushesBlocks.TIER_ONE_FARMLAND.asBlock(),
                 OreBushesBlocks.TIER_TWO_FARMLAND.asBlock(),
                 OreBushesBlocks.TIER_THREE_FARMLAND.asBlock()
         );
 
-        getOrCreateBuilder(OreBushesTags.Blocks.TIER_TWO_FARMLAND).add(
+        tag(OreBushesTags.Blocks.TIER_TWO_FARMLAND).add(
                 OreBushesBlocks.TIER_TWO_FARMLAND.asBlock(),
                 OreBushesBlocks.TIER_THREE_FARMLAND.asBlock()
         );
 
-        getOrCreateBuilder(OreBushesTags.Blocks.TIER_THREE_FARMLAND).add(
+        tag(OreBushesTags.Blocks.TIER_THREE_FARMLAND).add(
                 OreBushesBlocks.TIER_THREE_FARMLAND.asBlock()
         );
 
-        getOrCreateBuilder(Tags.Blocks.DIRT).add(
+        tag(Tags.Blocks.DIRT).add(
                 OreBushesBlocks.TIER_ONE_FARMLAND.asBlock(),
                 OreBushesBlocks.TIER_TWO_FARMLAND.asBlock(),
                 OreBushesBlocks.TIER_THREE_FARMLAND.asBlock()
